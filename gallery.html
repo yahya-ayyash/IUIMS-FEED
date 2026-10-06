@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d47a1">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>Gallery - Ibnu Umar Islamic Matriculation School</title>
+    
+    <!-- External Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <span><i class="fas fa-phone-alt"></i> 04633-212418</span>
+                    <span><i class="fas fa-envelope"></i> ibnuumarschool@gmail.com</span>
+                </div>
+                <div class="top-bar-right">
+                    <span class="admission-badge"><i class="fas fa-star"></i> Admissions Open 2026-27</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-wrapper">
+                    <div class="brand-icon">
+                        <img src="images/logo.png" alt="Ibnu Umar School Logo" class="brand-logo" onerror="this.remove()">
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-name">Ibnu Umar</span>
+                        <span class="brand-tagline">Islamic Matriculation School</span>
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="academics.html">Academics</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="facilities.html">Facilities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admissions.html">Admissions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link btn-parent-login" href="https://ibnuumar.mspeducare.com/" target="_blank"><i class="fas fa-user-graduate"></i> Parent Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header Banner -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Gallery</h1>
+            <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section section-white py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill">Our Gallery</span>
+                <h2>Moments & Memories</h2>
+            </div>
+
+            <!-- Filters -->
+            <div class="gallery-filters text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+                <button class="btn btn-outline-primary active m-1" data-filter="all">All</button>
+                <button class="btn btn-outline-primary m-1" data-filter="campus">Campus</button>
+                <button class="btn btn-outline-primary m-1" data-filter="events">Events</button>
+                <button class="btn btn-outline-primary m-1" data-filter="classroom">Classroom</button>
+                <button class="btn btn-outline-primary m-1" data-filter="sports">Sports</button>
+                <button class="btn btn-outline-primary m-1" data-filter="islamic">Islamic</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="row g-4 gallery-grid">
+                <!-- Campus 1 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="campus" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="images/campus.png" alt="School Building" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">School Building</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Campus 2 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="campus" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/0d47a1/ffffff?text=School+Gate" alt="School Gate" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">School Gate</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Events 1 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="events" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/1565c0/ffffff?text=Annual+Day" alt="Annual Day" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">Annual Day</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Events 2 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="events" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/1976d2/ffffff?text=Sports+Day" alt="Sports Day" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">Sports Day</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Classroom 1 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="classroom" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/1e88e5/ffffff?text=Smart+Classroom" alt="Smart Classroom" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">Smart Classroom</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Classroom 2 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="classroom" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/2196f3/ffffff?text=Science+Lab" alt="Science Lab" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">Science Lab</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sports 1 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="sports" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/42a5f5/ffffff?text=Playground" alt="Playground" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">Playground</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sports 2 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="sports" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/64b5f6/ffffff?text=Sports+Meet" alt="Sports Meet" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">Sports Meet</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Islamic 1 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="islamic" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/0d47a1/ffd700?text=Prayer+Hall" alt="Prayer Hall" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">Prayer Hall</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Islamic 2 -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="islamic" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/1a237e/ffd700?text=Quran+Class" alt="Quran Class" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">Quran Class</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mixed 1: Classroom / Campus -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="campus" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/1a73e8/ffffff?text=Library" alt="Library" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">Library</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mixed 2: Classroom -->
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="classroom" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card border-0 shadow-sm overflow-hidden h-100 position-relative">
+                        <img src="https://placehold.co/600x450/0d47a1/ffffff?text=Computer+Lab" alt="Computer Lab" class="img-fluid w-100">
+                        <div class="gallery-overlay d-flex flex-column align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-white opacity-0 transition-opacity">
+                            <i class="fas fa-search-plus fs-1 mb-2 zoom-icon"></i>
+                            <h5 class="caption mb-0">Computer Lab</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="galleryLightbox" class="lightbox">
+        <button class="lightbox-close"><i class="fas fa-times"></i></button>
+        <img id="lightboxImg" src="" alt="Gallery Lightbox Image">
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section section-gradient py-5 text-white text-center">
+        <div class="container" data-aos="fade-up">
+            <h2 class="mb-3">Experience Our Campus In Person</h2>
+            <p class="lead mb-4">Schedule a visit to see our facilities and understand our learning environment better.</p>
+            <a href="contact.html" class="btn btn-light btn-lg rounded-pill px-4 shadow-sm text-primary fw-semibold">Book a Tour</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-pattern"></div>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget">
+                        <div class="footer-brand">
+                            <img src="images/logo.png" alt="Ibnu Umar School Logo" class="footer-logo" onerror="this.remove()">
+                            <h3>Ibnu Umar</h3>
+                            <p>Islamic Matriculation School</p>
+                        </div>
+                        <p class="footer-desc">Nurturing young minds with the perfect blend of modern education and Islamic values. Recognized by the Government of Tamil Nadu.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="academics.html">Academics</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget">
+                        <h4>Explore</h4>
+                        <ul class="footer-links">
+                            <li><a href="facilities.html">Facilities</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="https://ibnuumar.mspeducare.com/" target="_blank">Parent Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget">
+                        <h4>Contact Info</h4>
+                        <div class="footer-contact">
+                            <p><i class="fas fa-map-marker-alt"></i> Tenkasi to Aiykudi Road, Mynaperi, Tenkasi, Tamil Nadu</p>
+                            <p><i class="fas fa-phone-alt"></i> 04633-212418</p>
+                            <p><i class="fas fa-envelope"></i> ibnuumarschool@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Ibnu Umar Islamic Matriculation School. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

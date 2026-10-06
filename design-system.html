@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System — Ibnu Umar Islamic Matriculation School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+/* ---------- Design tokens (verbatim from css/style.css) ---------- */
+:root {
+    --primary: #1a73e8;
+    --primary-dark: #0d47a1;
+    --primary-light: #4a9af5;
+    --accent: #ffd700;
+    --accent-dark: #c7a600;
+    --bg-white: #ffffff;
+    --bg-light: #f0f4ff;
+    --bg-soft: #e8eeff;
+    --text-dark: #1a1a2e;
+    --text-muted: #5a6075;
+    --text-light: #8892a8;
+    --gradient-1: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+    --gradient-2: linear-gradient(135deg, #0d47a1 0%, #1a237e 100%);
+    --gradient-3: linear-gradient(135deg, #ffd700 0%, #ffb300 100%);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 5px 25px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --shadow-blue: 0 10px 40px rgba(26, 115, 232, 0.3);
+    --shadow-gold: 0 5px 20px rgba(255, 215, 0, 0.4);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 30px;
+    --font-heading: 'Outfit', 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-quote: 'Amiri', Georgia, serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background: var(--bg-white);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+}
+
+a { text-decoration: none; color: var(--primary); transition: var(--transition); }
+a:hover { color: var(--primary-dark); }
+img { max-width: 100%; height: auto; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-light); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
+::selection { background: var(--primary); color: white; }
+
+/* ---------- Typography upgrades ---------- */
+.text-gold {
+    background: linear-gradient(92deg, #fff3b0 0%, var(--accent) 40%, #ff9800 75%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+h2.fw-bold, .section-header h2 {
+    background: linear-gradient(120deg, var(--primary-dark) 0%, var(--primary) 55%, #42a5f5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.stat-item h2.fw-bold {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--primary-dark);
+}
+
+.headline-3d {
+    font-family: var(--font-heading);
+    font-weight: 900 !important; /* beat Bootstrap's .fw-bold utility */
+    line-height: 1.08;
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.25),
+        0 2px 0 rgba(0, 0, 0, 0.22),
+        0 3px 0 rgba(0, 0, 0, 0.18),
+        0 6px 14px rgba(0, 0, 0, 0.45);
+}
+
+.headline-3d .text-gold {
+    filter: drop-shadow(0 3px 10px rgba(255, 215, 0, 0.45));
+}
+
+.font-quote { font-family: var(--font-quote); font-size: 1.25em; line-height: 1.8; }
+
+.typing-text {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+    border-right: 2px solid var(--accent);
+    padding-right: 5px;
+    animation: blink-cursor 0.7s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--accent); }
+}
+
+/* ---------- 3D scene primitives ---------- */
+.scene-3d { perspective: 1200px; }
+
+.tilt-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.tilt-3d.is-tilting { z-index: 5; box-shadow: var(--shadow-xl); }
+
+.tilt-3d::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.45) 48%, rgba(255, 255, 255, 0.08) 52%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tilt-3d:hover::after { opacity: 1; animation: sheen-sweep 0.9s ease forwards; }
+
+@keyframes sheen-sweep {
+    from { background-position: -120% 0; }
+    to { background-position: 220% 0; }
+}
+
+/* ---------- 3D buttons ---------- */
+.btn-primary-custom,
+.btn-gold,
+.btn-parent-login,
+.cta-section .btn,
+.back-to-top {
+    border-bottom: 4px solid rgba(0, 0, 0, 0.25);
+    transition: var(--transition);
+}
+
+.btn-primary-custom:hover,
+.btn-gold:hover,
+.back-to-top:hover {
+    transform: translateY(-3px) !important;
+    filter: brightness(1.08);
+}
+
+.btn-primary-custom:active,
+.btn-gold:active,
+.back-to-top:active {
+    transform: translateY(1px) !important;
+    border-bottom-width: 2px !important;
+    margin-bottom: 2px;
+}
+
+.btn-gold { border-bottom-color: #b8860b; }
+
+.btn-primary-custom {
+    background: var(--gradient-1);
+    color: white;
+    padding: 14px 35px;
+    border-radius: var(--radius-xl);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-blue);
+}
+
+.btn-primary-custom:hover { color: white; box-shadow: 0 15px 40px rgba(26, 115, 232, 0.4); }
+
+.btn-outline-custom {
+    background: transparent;
+    color: white;
+    padding: 14px 35px;
+    border-radius: var(--radius-xl);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.btn-outline-custom:hover {
+    background: white;
+    color: var(--primary-dark);
+    border-color: white;
+    transform: translateY(-3px);
+}
+
+.btn-gold {
+    background: var(--gradient-3);
+    color: var(--text-dark);
+    padding: 14px 35px;
+    border-radius: var(--radius-xl);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-gold);
+}
+
+.btn-gold:hover { color: var(--text-dark); box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5); }
+
+.btn-glow { animation: glow-pulse 2s ease-in-out infinite; }
+
+@keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 5px rgba(26, 115, 232, 0.4), 0 0 10px rgba(26, 115, 232, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(26, 115, 232, 0.6), 0 0 40px rgba(26, 115, 232, 0.3); }
+}
+
+/* ---------- 3D icon medallions ---------- */
+.icon-wrapper, .stat-icon, .feature-icon, .info-icon, .value-card .value-icon {
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, 0.45),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.22),
+        0 8px 18px rgba(13, 71, 161, 0.18);
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.icon-wrapper, .feature-icon {
+    transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.feature-card:hover .icon-wrapper,
+.feature-card:hover .feature-icon {
+    transform: translateY(-6px) rotate(-6deg) scale(1.08);
+}
+
+/* ---------- Hero + mosque tile ---------- */
+.hero-section {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(60% 55% at 78% 22%, rgba(255, 215, 0, 0.16), transparent 60%),
+        radial-gradient(55% 60% at 15% 80%, rgba(66, 165, 243, 0.28), transparent 62%),
+        var(--gradient-2);
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    width: 620px;
+    height: 620px;
+    border-radius: 50%;
+    right: -160px;
+    top: -120px;
+    background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04) 55%, transparent 70%);
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+.hero-3d-art { position: relative; perspective: 1000px; }
+
+.mosque-3d {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    border-radius: 32px;
+    background:
+        radial-gradient(120% 90% at 30% 15%, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 45%),
+        linear-gradient(145deg, rgba(26, 115, 232, 0.55), rgba(13, 71, 161, 0.85));
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -10px 24px rgba(0, 0, 0, 0.25),
+        0 24px 48px rgba(0, 0, 0, 0.35),
+        0 8px 24px rgba(255, 215, 0, 0.12);
+    transform: rotateY(-14deg) rotateX(6deg);
+    transition: transform 0.2s ease-out;
+}
+
+.mosque-3d .mosque-icon {
+    font-size: 8rem;
+    color: var(--accent);
+    animation: mosque-icon-float 6s ease-in-out infinite;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 22px rgba(255, 215, 0, 0.35));
+}
+
+/* Real campus photo filling the 3D tile (icon stays behind as fallback) */
+.mosque-photo {
+    position: absolute;
+    inset: 12px;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    object-fit: cover;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    z-index: 2;
+}
+
+@keyframes mosque-icon-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.mosque-3d .mosque-ring {
+    position: absolute;
+    inset: -18px;
+    border: 2px dashed rgba(255, 215, 0, 0.45);
+    border-radius: 40px;
+    animation: mosque-ring-spin 14s linear infinite;
+}
+
+@keyframes mosque-ring-spin {
+    to { transform: rotate(360deg); }
+}
+
+.mosque-3d .mosque-badge {
+    position: absolute;
+    bottom: -16px;
+    right: -10px;
+    background: linear-gradient(135deg, var(--accent), #ffb300);
+    color: var(--text-dark);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    padding: 10px 18px;
+    border-radius: 999px;
+    box-shadow: 0 12px 24px rgba(255, 193, 7, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.6);
+    animation: float 3s ease-in-out infinite;
+}
+
+.mosque-3d .mosque-badge small {
+    display: block;
+    font-weight: 600;
+    font-size: 0.65rem;
+    opacity: 0.75;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+.orbit-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    padding: 10px 16px;
+    border-radius: 16px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    animation: float 4s ease-in-out infinite;
+    z-index: 4;
+}
+
+.orbit-card i {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    color: #fff;
+    font-size: 0.95rem;
+    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.4), 0 6px 12px rgba(26, 115, 232, 0.35);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.orbit-card h6 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--primary-dark);
+    line-height: 1.1;
+}
+
+.orbit-card small { color: var(--text-muted); font-size: 0.7rem; font-weight: 500; }
+
+.orbit-card.orbit-1 { top: 6%; left: -34px; animation-delay: 0.6s; }
+.orbit-card.orbit-2 { bottom: 12%; right: -30px; animation-delay: 1.4s; }
+
+/* ---------- Section pieces ---------- */
+.section-light { background: var(--bg-light); }
+.section-gradient { background: var(--gradient-2); color: white; }
+
+.section-header { text-align: center; margin-bottom: 60px; position: relative; }
+
+.section-header .section-badge {
+    display: inline-block;
+    background: rgba(26, 115, 232, 0.1);
+    color: var(--primary);
+    padding: 5px 18px;
+    border-radius: var(--radius-xl);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
+
+.section-gradient .section-badge { background: rgba(255, 215, 0, 0.2); color: var(--accent); }
+.section-gradient h2.fw-bold {
+    background: linear-gradient(120deg, #fff 30%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.islamic-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 10px auto 0;
+    width: fit-content;
+}
+
+.islamic-divider .line { width: 50px; height: 2px; background: var(--gradient-1); border-radius: 2px; }
+.islamic-divider .diamond { width: 10px; height: 10px; background: var(--accent); transform: rotate(45deg); border-radius: 2px; }
+
+.stat-item {
+    transform-style: preserve-3d;
+    transition: var(--transition-slow);
+}
+
+.stat-item:hover { transform: translateY(-8px) rotateX(6deg); }
+
+.stat-item .counter, .stat-item .stat-number {
+    font-family: var(--font-heading);
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.8), 0 4px 10px rgba(13, 71, 161, 0.25);
+}
+
+.feature-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(26, 115, 232, 0.08);
+    border-bottom-width: 3px;
+    height: 100%;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.feature-card:hover::before { transform: scaleX(1); }
+.feature-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+
+.feature-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 38%);
+    pointer-events: none;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: var(--bg-soft);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.feature-card:hover .feature-icon {
+    background: var(--gradient-1);
+    color: white;
+    box-shadow: var(--shadow-blue);
+    border-radius: 50%;
+}
+
+.feature-card h4 { font-size: 1.15rem; margin-bottom: 12px; font-weight: 700; }
+.feature-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; }
+
+/* ---------- Marquee ribbon ---------- */
+.ribbon-marquee {
+    position: relative;
+    z-index: 6;
+    overflow: hidden;
+    background: linear-gradient(90deg, #b8860b, var(--accent) 30%, #fff3b0 50%, var(--accent) 70%, #b8860b);
+    color: var(--text-dark);
+    padding: 10px 0;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.ribbon-marquee .marquee-track {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: marquee-scroll 26s linear infinite;
+    will-change: transform;
+}
+
+.ribbon-marquee .marquee-track span {
+    padding: 0 2.5rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.ribbon-marquee .marquee-track span i { font-size: 0.8rem; }
+
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* ---------- School logo ---------- */
+.brand-icon {
+    background: #ffffff;
+    border: 1px solid rgba(26, 115, 232, 0.18);
+}
+
+.brand-logo {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    border-radius: 50%;
+    filter: drop-shadow(0 2px 4px rgba(13, 71, 161, 0.25));
+}
+
+.preloader-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    animation: preloader-pulse 1.6s ease-in-out infinite;
+    filter: drop-shadow(0 6px 14px rgba(13, 71, 161, 0.35));
+}
+
+@keyframes preloader-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.85; }
+}
+
+.footer-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 4px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Accessibility & responsive ---------- */
+a:focus-visible, button:focus-visible {
+    outline: 3px solid rgba(26, 115, 232, 0.55);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mosque-3d, .mosque-3d .mosque-ring, .mosque-3d .mosque-badge,
+    .orbit-card, .ribbon-marquee .marquee-track { animation: none !important; }
+    .tilt-3d { transition: none; }
+}
+
+@media (max-width: 991px) {
+    .mosque-3d { max-width: 320px; }
+    .mosque-3d .mosque-icon { font-size: 5.5rem; }
+    .orbit-card.orbit-1, .orbit-card.orbit-2 { left: 8px; right: auto; }
+    .orbit-card.orbit-2 { left: auto; right: 8px; }
+}
+
+@media (max-width: 575px) {
+    .mosque-3d { max-width: 250px; border-radius: 24px; }
+    .mosque-3d .mosque-icon { font-size: 4.2rem; }
+    .headline-3d {
+        text-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.25),
+            0 2px 0 rgba(0, 0, 0, 0.22),
+            0 6px 14px rgba(0, 0, 0, 0.45);
+    }
+    .orbit-card { padding: 8px 12px; }
+    .orbit-card h6 { font-size: 0.8rem; }
+    .orbit-card i { width: 30px; height: 30px; font-size: 0.8rem; }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Announcement ribbon -->
+    <div class="ribbon-marquee">
+        <div class="marquee-track">
+            <span><i class="fas fa-circle-check"></i> Admissions Open 2026-27</span>
+            <span><i class="fas fa-graduation-cap"></i> Nursery to Grade 10 — Matriculation Stream</span>
+            <span><i class="fas fa-mosque"></i> Hifz &amp; Quran Classes</span>
+            <span><i class="fas fa-bus"></i> Transport Across Tenkasi</span>
+            <span><i class="fas fa-flask"></i> Smart Classrooms &amp; Science Labs</span>
+            <span><i class="fas fa-circle-check"></i> Admissions Open 2026-27</span>
+            <span><i class="fas fa-graduation-cap"></i> Nursery to Grade 10 — Matriculation Stream</span>
+            <span><i class="fas fa-mosque"></i> Hifz &amp; Quran Classes</span>
+            <span><i class="fas fa-bus"></i> Transport Across Tenkasi</span>
+            <span><i class="fas fa-flask"></i> Smart Classrooms &amp; Science Labs</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <header class="hero-section">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <span class="badge bg-primary rounded-pill mb-3 px-3 py-2">Govt. Recognized School</span>
+                    <h1 class="display-4 fw-bold text-white mb-2 headline-3d">Welcome to <span class="text-gold">Ibnu Umar</span></h1>
+                    <div class="mb-4 text-white fs-4"><span class="typing-text">Where Faith Meets Knowledge</span></div>
+                    <p class="lead text-white-50 mb-4" style="max-width: 500px;">3D layered headline, gradient-gold display type, chunky candy buttons and a floating mosque tile — the new design language.</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#" class="btn btn-gold btn-glow btn-lg px-4 rounded-pill">Admissions Open 2026-27</a>
+                        <a href="#" class="btn btn-outline-custom btn-lg px-4 rounded-pill">Explore More</a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="hero-3d-art scene-3d">
+                        <div class="mosque-3d" id="heroMosque">
+                            <span class="mosque-ring"></span>
+                            <i class="fas fa-mosque mosque-icon"></i>
+                            <img src="images/campus.png" alt="School Campus" class="mosque-photo" onerror="this.remove()">
+                            <div class="mosque-badge">15+ Years <small>of Excellence</small></div>
+                        </div>
+                        <div class="orbit-card orbit-1">
+                            <i class="fas fa-award"></i>
+                            <div><h6>Ranked #1</h6><small>In the Region</small></div>
+                        </div>
+                        <div class="orbit-card orbit-2">
+                            <i class="fas fa-users"></i>
+                            <div><h6>1500+</h6><small>Happy Students</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3">
+                    <div class="stat-item tilt-3d p-4 rounded-4 shadow-sm h-100 border">
+                        <i class="fas fa-calendar-alt fs-1 text-primary mb-3"></i>
+                        <h2 class="fw-bold mb-0">15+</h2>
+                        <p class="text-muted mb-0">Years of Excellence</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item tilt-3d p-4 rounded-4 shadow-sm h-100 border">
+                        <i class="fas fa-user-graduate fs-1 text-primary mb-3"></i>
+                        <h2 class="fw-bold mb-0">1500+</h2>
+                        <p class="text-muted mb-0">Students</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item tilt-3d p-4 rounded-4 shadow-sm h-100 border">
+                        <i class="fas fa-chalkboard-teacher fs-1 text-primary mb-3"></i>
+                        <h2 class="fw-bold mb-0">85+</h2>
+                        <p class="text-muted mb-0">Teachers</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item tilt-3d p-4 rounded-4 shadow-sm h-100 border">
+                        <i class="fas fa-trophy fs-1 text-primary mb-3"></i>
+                        <h2 class="fw-bold mb-0">50+</h2>
+                        <p class="text-muted mb-0">Awards</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature cards -->
+    <section class="section-light py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="section-badge">Why Choose Us</span>
+                <h2 class="fw-bold">What Makes Us Special</h2>
+                <div class="islamic-divider"><span class="line"></span><i class="fas fa-star-and-crescent text-primary"></i><span class="diamond"></span></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card tilt-3d bg-white text-center h-100 border-bottom border-primary border-3">
+                        <div class="icon-wrapper bg-primary-subtle text-primary rounded-circle p-3 d-inline-block mb-4 fs-2"><i class="fas fa-mosque"></i></div>
+                        <h4 class="fw-bold mb-3">Islamic Values</h4>
+                        <p class="text-muted mb-0">Hover any card — it tilts in 3D and a light sheen sweeps across the surface.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card tilt-3d bg-white text-center h-100 border-bottom border-warning border-3">
+                        <div class="icon-wrapper bg-warning-subtle text-warning rounded-circle p-3 d-inline-block mb-4 fs-2"><i class="fas fa-laptop-code"></i></div>
+                        <h4 class="fw-bold mb-3">Modern Education</h4>
+                        <p class="text-muted mb-0">Icon medallions get embossed highlights and pop out on hover.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card tilt-3d bg-white text-center h-100 border-bottom border-success border-3">
+                        <div class="icon-wrapper bg-success-subtle text-success rounded-circle p-3 d-inline-block mb-4 fs-2"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h4 class="fw-bold mb-3">Expert Faculty</h4>
+                        <p class="text-muted mb-0">Gradient section headings use the Outfit display typeface.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card tilt-3d bg-white text-center h-100 border-bottom border-info border-3">
+                        <div class="icon-wrapper bg-info-subtle text-info rounded-circle p-3 d-inline-block mb-4 fs-2"><i class="fas fa-shield-halved"></i></div>
+                        <h4 class="fw-bold mb-3">Safe Environment</h4>
+                        <p class="text-muted mb-0">All motion respects <code>prefers-reduced-motion</code>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buttons on gradient -->
+    <section class="section-gradient py-5 text-center">
+        <div class="container">
+            <h2 class="fw-bold mb-4">Buttons &amp; Accents</h2>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="#" class="btn btn-primary-custom">Primary 3D</a>
+                <a href="#" class="btn btn-gold">Gold 3D</a>
+                <a href="#" class="btn btn-outline-custom">Outline</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 text-center" style="background: #1a1a2e; color: #8892a8;">
+        <p class="mb-0 small">Design-system showcase — the real site lives in <strong>index.html</strong> with <strong>css/style.css</strong> + <strong>js/main.js</strong>.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // 3D tilt on cards
+        document.querySelectorAll('.tilt-3d').forEach(card => {
+            if (!finePointer || reduceMotion) return;
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const px = (e.clientX - rect.left) / rect.width;
+                const py = (e.clientY - rect.top) / rect.height;
+                const rotY = (px - 0.5) * 14;
+                const rotX = (0.5 - py) * 12;
+                card.classList.add('is-tilting');
+                card.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateZ(14px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('is-tilting');
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0)';
+            });
+        });
+
+        // Hero parallax
+        const heroArt = document.querySelector('.mosque-3d');
+        const heroHeadline = document.querySelector('.headline-3d');
+        if (heroArt && finePointer && !reduceMotion) {
+            const hero = heroArt.closest('.hero-section');
+            hero.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                const px = (e.clientX - rect.left) / rect.width - 0.5;
+                const py = (e.clientY - rect.top) / rect.height - 0.5;
+                heroArt.style.transform = `rotateY(${-14 + px * 10}deg) rotateX(${6 - py * 8}deg)`;
+                if (heroHeadline) heroHeadline.style.transform = `translate3d(${px * -10}px, ${py * -6}px, 0)`;
+            });
+            hero.addEventListener('mouseleave', () => {
+                heroArt.style.transform = '';
+                if (heroHeadline) heroHeadline.style.transform = '';
+            });
+        }
+    });
+    </script>
+</body>
+</html>
